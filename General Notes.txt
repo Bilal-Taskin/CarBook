@@ -1,0 +1,20 @@
+1-) Dto nedir neden kullanýlýr?
+
+DTO, Asýl Nesneden Farký Nedir?
+
+Asýl Nesne (Entity/Model): Veritabanýndaki tablonuzu veya iþ mantýðýnýzýn çekirdeðini temsil eder. Ýçinde iþ kurallarý, veritabaný iliþkileri ve tüm alanlar bulunur.
+
+DTO (Data Transfer Object): Sadece veri alanlarýndan oluþur, hiçbir iþ mantýðý içermez. Tek görevi, veriyi bir yerden diðerine paketlenmiþ olarak taþýmaktýr.
+
+Basit Bir Örnek
+Bir web uygulamasýnda düþünün:
+
+Veritabaný Nesnesi (Entity): User (Kullanýcýnýn adý, soyadý, e-posta, parola HASH'i, veritabaný ID'si, hesabý oluþturma tarihi gibi tüm bilgileri içerir.)
+
+DTO:
+
+Kullanýcý Arayüzü DTO'su (UserViewDTO): (Sadece adý, soyadý, profil resmi URL'si gibi arayüzde gösterilmesi gereken, güvenli bilgileri içerir.)
+
+Kayýt Alma DTO'su (RegisterInputDTO): (Sadece ad, soyad, e-posta ve parola gibi kullanýcýnýn girmesi gereken verileri içerir.)
+
+Kýsacasý, DTO, veriyi bir yerden alýp bir yere teslim eden, basit, saf bir veri taþýyýcýsýdýr ve bu sayede sisteminiz daha güvenli, hýzlý ve düzenli olur.

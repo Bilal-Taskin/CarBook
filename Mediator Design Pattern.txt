@@ -1,0 +1,5 @@
+Ayný interface üzerinden türeyen nesneler arasýndaki iletiþimi merkezi bir nesne (mediator) aracýlýðýyla yönetmeyi amaçlayan tasarým desenidir. Bu desen, nesneler arasýndaki baðýmlýlýklarý azaltarak sistemin daha esnek ve bakýmý kolay hale gelmesini saðlar.
+
+Örnek olaark uçaklarýn hepsi kule ile iletiþime geçer birbirleri ile deðil
+
+kritiik nokta þudur ki kule o havashasý içindeki bütün uçaklar ile iletiþime geçmek zorunda deðildir. Ýlgili havalimaný ile iþlemi olan veya olabilecek uçaklar ile iletiþime geçer

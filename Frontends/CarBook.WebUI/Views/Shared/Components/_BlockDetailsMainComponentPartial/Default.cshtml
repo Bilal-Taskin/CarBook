@@ -1,0 +1,21 @@
+﻿@model GetBlockById 
+ @* _BlockDetailsMainComponentPartial  sayfasının default'u*@
+<div class="col-md-8 ftco-animate">
+    <h2 class="mb-3">@Model.Title</h2>
+    <p>@Model.BlockDescription</p>
+   
+    @await Component.InvokeAsync("_BlogDetailCloudTagByBlogComponentPartial", new { id = ViewBag.blockId })
+
+    @await Component.InvokeAsync("_BlockDetailsAboutAuthorComponentPartial")
+
+      <div class="pt-5 mt-5">
+        
+        <h3 class="mb-5">6 Comments</h3>
+      
+        @await Component.InvokeAsync("_CommentListByBlockComponentPartial")
+
+        @await Component.InvokeAsync("_AddCommentCopmonentPartial")
+       
+     </div>
+
+</div>

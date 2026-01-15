@@ -1,0 +1,2 @@
+1-) Our general archiecture is onion architecture.
+2-) We used CQRS architecture for CRUD events.

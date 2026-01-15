@@ -1,0 +1,16 @@
+1-) Yazma ve okuma iþlemlerini ayýrýr
+2-) Bir metod objenin durumunu deðiþtirmeli
+3-) Performans, güvenlik ve ölçeklendirebilirlik saðlar
+4-) Yazmadan kasýt: Create-Update_Delete iþlemleri
+5-) Okumadan kasýt: List-GetById iþlemleri 
+
+
+*Commands: Select, Update, Delete, Insert proplarý
+*Queris:Þartlý listeleme proplarý
+*Handlers:Crud iþlemleri
+*Results:Listeleme iþlmeleri proplarý
+
+!Command objenin durumunu deðiþtirir
+!Query sonucunu geriye döndürür(return)
+
+!!Querler genelde Get ön eki ile baþlar

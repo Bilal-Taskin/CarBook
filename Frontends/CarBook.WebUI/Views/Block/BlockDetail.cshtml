@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewData["Title"] = "BlockDetail";
+    Layout = "~/Views/UILayout/Index.cshtml";
+}
+
+<section class="ftco-section ftco-degree-bg">
+    <div class="container">
+        <div class="row">   
+           
+            @await Component.InvokeAsync("_BlockDetailsMainComponentPartial",new {id=ViewBag.blockId})
+
+           
+            <div class="col-md-4 sidebar ftco-animate">
+
+                @await Component.InvokeAsync("_BlockDetailsSideBarSearchBoxComponentPartial")
+               
+                
+                
+                @await Component.InvokeAsync("_BlockDetailsCategoryComponentPartial")
+
+
+                @await Component.InvokeAsync("_BlockDetailsRecentBlocksComponentPartial")
+
+
+                @await Component.InvokeAsync("_BlockDetailsTagCloudComponentPartial", new { id = ViewBag.blockId })
+                
+                
+                @await Component.InvokeAsync("_BlockDetailsParagraphComponentPartial")
+               
+               
+             </div>
+
+        </div>
+    </div>
+</section>
