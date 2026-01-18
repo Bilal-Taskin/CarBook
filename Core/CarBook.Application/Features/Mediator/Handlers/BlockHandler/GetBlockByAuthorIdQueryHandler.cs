@@ -7,34 +7,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 namespace CarBook.Application.Features.Mediator.Handlers.BlockHandler
 {
-    public class GetAllBlocksWithAuthorCommandHandler: IRequestHandler<GetAllBlocksWithAuthorQuery, List<GetAllBlocksWithAuthorQueryResult>>
+    public class GetBlockByAuthorIdQueryHandler : IRequestHandler<GetBlockByAuthorIdQuery, List<GetBlockByAuthorIdQueryResult>>
     {
         private readonly IBlockRepository _blockRepository;
 
-        public GetAllBlocksWithAuthorCommandHandler(IBlockRepository blockRepository)
+        public GetBlockByAuthorIdQueryHandler(IBlockRepository blockRepository)
         {
             _blockRepository = blockRepository;
         }
 
-        public async Task<List<GetAllBlocksWithAuthorQueryResult>> Handle(GetAllBlocksWithAuthorQuery request, CancellationToken cancellationToken)
+        public async Task<List<GetBlockByAuthorIdQueryResult>> Handle(GetBlockByAuthorIdQuery request, CancellationToken cancellationToken)
         {
-            var values = _blockRepository.GetAllBlocksWithAuthor    ();
-            return values.Select(x => new GetAllBlocksWithAuthorQueryResult
+            var values =  _blockRepository.GetBlocksByAuthorId(request.Id);
+            return values.Select(x => new GetBlockByAuthorIdQueryResult
             {
                 AuthorId = x.AuthorId,
                 BlockID = x.BlockID,
-                CategoryId = x.CategoryId,
-                CreatedDate = x.CreatedDate,
-                CoverImageUrl = x.CoverImageUrl,
-                Title = x.Title,
                 AuthorName = x.Author.AuthorName,
-                BlockDescription =x.BlockDescription,
                 AuthorDescription = x.Author.Description,
                 AuthorImageUrl = x.Author.ImageUrl,
+               
             }).ToList();
         }
     }
 }
-

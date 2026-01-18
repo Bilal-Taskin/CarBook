@@ -19,6 +19,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Notes", "Notes", "{2B58F09E
 		CQRS Design Pattern.txt = CQRS Design Pattern.txt
 		General Notes.txt = General Notes.txt
 		Mediator Design Pattern.txt = Mediator Design Pattern.txt
+		RepositoryDesignPattern.txt = RepositoryDesignPattern.txt
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarBook.Application", "Core\CarBook.Application\CarBook.Application.csproj", "{23F31200-4B59-42F6-B61D-1AB18D2931CA}"

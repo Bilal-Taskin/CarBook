@@ -1,0 +1,20 @@
+Repository Design Pattern
+
+1-)Repository Design Pattern yazýlým geliþtirmede kullanýlan, Data Source(veri kaynaðý) ile uygulama arasýnda aracý görevi gören structural(yapýsal) bir tasarým desenidir.
+
+2-)Data access mantýðýný programýn kalanýndan soyutlayarak veriye eriþmek için tutarlý bir arayüz saðlar. Repository tasarým deseni genellikle veri kaynaðýnda CRUD(Create, Read, Update, Delete) iþlemlerini gerçekleþtirmek için gereken metotlarý içerir.
+
+3-)Repository Design Pattern’in Avantajlarý
+
+Veri kaynaðýndan baðýmsýz olarak veriye eriþmek için tutarlý ve merkezi bir yol saðlar.
+Veri depolama yönteminin detaylarýnýn deðiþmesi durumunda kod yapýsýnýn kalanýný etkilemeden deðiþiklik yapmaya imkan saðlar.
+Business logic(iþ mantýðý) ve data access logic(veri eriþim mantýðý)‘i ayýrarak daha temiz ve sürdürülebilir kod yapýsýna katkýda bulunur.
+Yazýlým geliþtiricilerin veriye eriþmek ve güncellemek gibi iþlemler hakkýnda endiþelenmeden iþ mantýðýna odaklanmasýna yardýmcý olur.
+Uygulamanýn farklý bölümlerinden eriþilebilecek yeniden kullanýlabilir veri eriþim metotlarý saðlar ve kod tekrarlarýný azaltýr.
+
+4-)Repository Design Pattern’in Dezavantajlarý
+
+Basit uygulamalarda repository design pattern kullanýmý gereksiz karmaþýklýk yaratabilir.
+Gereksiz soyutlamalar karmaþýklýðý arttýrarak kod okunabilirliðini azaltabilir.
+Doðru þekilde uygulanmamasý performans problemlerine sebep olabilir.
+Bütün senaryolar için uygun olmayabilir, bazý durumlarda daha optimize bir performans için doðrudan veri kaynaðýna eriþmek gerekebilir.

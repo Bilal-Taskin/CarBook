@@ -11,5 +11,6 @@ namespace CarBook.Application.Interfaces.BlockInterface
     {
         public List<Block> GetLAst3BlockWithAuthor();
         public List<Block> GetAllBlocksWithAuthor();
+        public List<Block> GetBlocksByAuthorId(int id);
     }
 }

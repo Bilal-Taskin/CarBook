@@ -70,5 +70,12 @@ namespace CarBook.WebApi.Controllers
             return Ok(values);
         }
 
+        [HttpGet("GetBlocksByAuthorId")]
+        public async Task<IActionResult> GetBlocksByAuthorId(int id)
+        {
+            var values = await _mediator.Send(new GetBlockByAuthorIdQuery(id));
+            return Ok(values);
+        }
+
     }
 }

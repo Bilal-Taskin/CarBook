@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace CarBook.Persistance.Repositories.BlockRepositories
 {
+    //burası interface den gelen metotların içini doldurmak için oluşturduk
     public class BlockRepository : IBlockRepository
     {
         private readonly CarBookContext _context;
@@ -22,6 +23,12 @@ namespace CarBook.Persistance.Repositories.BlockRepositories
         public List<Block> GetAllBlocksWithAuthor()
         {
             var values = _context.Blocks.Include(x=>x.Author).ToList();
+            return values;
+        }
+
+        public List<Block> GetBlocksByAuthorId(int id)
+        {
+            var values = _context.Blocks.Include(x=>x.Author).Where(x => x.BlockID == id).ToList();
             return values;
         }
 
