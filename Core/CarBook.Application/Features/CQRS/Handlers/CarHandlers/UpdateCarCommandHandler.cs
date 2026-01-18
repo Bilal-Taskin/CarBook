@@ -20,7 +20,7 @@ namespace CarBook.Application.Features.CQRS.Handlers.CarHandlers
         }
         public async Task Handel(UpdateCarCommands command)
         {
-            var values = await _carRepository.GetByIdAsync(command.BrandID);
+            var values = await _carRepository.GetByIdAsync(command.CarID);
             
             values.BrandID = command.BrandID;
             values.Model = command.Model;
