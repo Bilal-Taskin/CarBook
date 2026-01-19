@@ -30,9 +30,10 @@
                                         <th>Transmission</th>
                                         <th>Km</th>
                                         <th>Delete</th>
-                                        <th>Güncelle</th>
+                                        <th>Update</th>
                                         <th>Details</th>
                                         <th>Show Site</th>
+                                        <th>Price</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -44,11 +45,13 @@
                                         <td>@item.Model</td>
                                         <td>@item.Transmission</td>
                                         <td>@item.Km</td>
+                                        
                                             <td><a href="/AdminCar/RemoveCar/@item.CarID" class="btn btn-outline-danger">Delete</a></td>
                                             <td><a href="/AdminCar/UpdateCar/@item.CarID" class="btn btn-outline-success">Update</a></td>
                                             <td><a href="/AdminCar/DetailCar/@item.CarID" class="btn btn-outline-info">Detail</a></td>
                                             <td><a href="/AdminCar/DetailCar/@item.CarID" class="btn btn-outline-warning">Show</a></td>
-                                    </tr>
+                                            <td><a href="/AdminCar/DetailCar/@item.CarID" class="btn btn-outline-secondary">Price Info</a></td>
+                                    </tr>   
                                     }
                                 </tbody>
                             </table>

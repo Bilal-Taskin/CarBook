@@ -39,9 +39,9 @@ namespace CarBook.WebApi.Controllers
             return Ok("Özellik başarılı bir şekilde eklenmiştri");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
 
-        public async Task<IActionResult> DeleteFeature( int id)
+        public async Task<IActionResult> DeleteFeature(int id)
         {
             await _mediator.Send(new RemoveFeatureCommand(id));
             return Ok("Özellik başarılı bir şekilde silinmiştir");

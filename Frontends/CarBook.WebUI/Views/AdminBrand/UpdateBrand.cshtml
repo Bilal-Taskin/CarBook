@@ -1,0 +1,42 @@
+﻿@model UpdateBrandDto
+@{
+    ViewData["Title"] = "UpdateBrand";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <h4 class="card-title">Update Car Properties</h4>
+                        <p class="card-subtitle mb-4">Please fill the blanks correctly. Then click the submit  button</p>
+
+                        <form method="post">
+
+                            <div class="form-group">
+                                <input type="hidden" asp-for="brandID" />
+                                <label for="exampleInputName">Brand Name</label>
+                                <input type="text" class="form-control" id="exampleInputName" asp-for="name" placeholder="Enter property name">
+                            </div>
+
+                            <button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
