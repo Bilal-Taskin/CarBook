@@ -1,0 +1,71 @@
+﻿@model List<ResultBannerDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+
+<div class="page-content">
+    <div class="container-fluid">
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Main Page Banner Side</h4>
+                        <p class="card-subtitle mb-4">
+                            Arrange the banner side infos.
+                            <code>.table</code> to any
+                            <code>&lt;table&gt;</code>.
+                        </p>
+                        <div class="table-responsive">
+                            <table class="table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Header</th>
+                                        <th>Title</th>
+                                        <th>Video Url</th>
+                                        <th>Video Description</th>
+                                        <th>Delete</th>
+                                        <th>Update</th>
+                                        <th>Watch The Video</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        count++;
+                                        <tr>
+                                            <th scope="row">@count</th>
+                                            <td>@item.Title</td>
+                                            <td>@item.Description</td>
+                                            <td>@item.VideoUrl</td>
+                                            <td>@item.VideoDescription</td>
+                                            <td><a href="/Admin/AdminBanner/RemoveBanner/@item.BannerID" class="btn btn-outline-danger">Delete</a></td>
+                                            <td><a href="/Admin/AdminBanner/UpdateBanner/@item.BannerID" class="btn btn-outline-success">Update</a></td>
+                                            <td><a href="/Admin/AdminBanner/RemoveBanner/@item.BannerID" class="btn btn-outline-dark">Watch</a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                            <td><a href="/Admin/AdminBanner/CreateBanner/" class="btn btn-outline-primary">Add New Banner<a></td>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+
+

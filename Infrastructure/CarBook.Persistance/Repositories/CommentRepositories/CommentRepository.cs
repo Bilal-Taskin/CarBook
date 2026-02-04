@@ -42,6 +42,11 @@ namespace CarBook.Persistance.Repositories.CommentRepositories
             return _context.Comments.Find(id);
         }
 
+        public List<Comment> GetCommnetsByBlockId(int id)
+        {
+            return _context.Set<Comment>().Where(x=>x.BlockId ==id).ToList();  
+        }
+
         public void Remove(Comment entity)
         {
             var value = _context.Comments.Find(entity.CommentId);

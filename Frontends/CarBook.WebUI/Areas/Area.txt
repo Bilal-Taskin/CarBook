@@ -1,0 +1,1 @@
+﻿Domain gibi spesifik alanların bir üst çatısı gibi düşünülebilir. Örneğin, CarBook.WebUI projesinde "Admin" adında bir alan oluşturulabilir. Bu alan, yönetim paneli ile ilgili tüm sayfaları ve işlemleri içerebilir.

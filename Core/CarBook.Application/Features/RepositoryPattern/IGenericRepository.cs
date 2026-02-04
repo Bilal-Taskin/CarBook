@@ -13,6 +13,7 @@ namespace CarBook.Application.Features.RepositoryPattern
         void Add(T entity);
         void Update(T entity);
         void Remove(T entity);
+        List<T> GetCommnetsByBlockId(int id);   
            
     }
 }
