@@ -1,0 +1,11 @@
+Car count
+Location count
+Author count
+Block Count
+Brand Count
+Daily avarage price of Rented car
+Weekly avarage price of Rented car
+Mountly avarage price of Rented car
+Authomatic shift car amount
+Most amount of car brand	
+The block header has most comment

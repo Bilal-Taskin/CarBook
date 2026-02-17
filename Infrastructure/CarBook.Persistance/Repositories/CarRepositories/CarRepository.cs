@@ -8,6 +8,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
+//Linq sorguları burada yazılır. Buası veritabanına erişim katmanıdır
+
+
 namespace CarBook.Persistance.Repositories.CarRepositories
 {
     public class CarRepository : ICarRepository
@@ -17,6 +21,12 @@ namespace CarBook.Persistance.Repositories.CarRepositories
         public CarRepository(CarBookContext context)
         {
             _context = context;
+        }
+
+        public int GetCarCount()
+        {
+           var value = _context.Cars.Count();
+           return value;
         }
 
         public List<Car> GetCarsListWithBrand()
