@@ -4,6 +4,12 @@
     Layout = null;
 }
 
+<style>
+    #drop option {
+        color: black;
+    }
+</style>
+
 <!DOCTYPE html>
 <html lang="en">
 @await Component.InvokeAsync("_HeadUILayoutComponentPartial")
@@ -13,7 +19,7 @@
 
     @await Component.InvokeAsync("_DefaultCoverUILayoutComponentPartial")
 
-   
+
     <section class="ftco-section ftco-no-pt bg-light">
         <div class="container">
             <div class="row no-gutters">
@@ -23,7 +29,7 @@
                             <form method="post" class="request-form ftco-animate bg-primary">
                                 <h2>Make your trip</h2>
                                 <div class="form-group">
-                                    <label for="" class="label" >Pick-up location</label>
+                                    <label for="" class="label">Pick-up location</label>
                                     @Html.DropDownListFor(x => x.LocationID, (List<SelectListItem>)ViewBag.v, new { @class = "form-control", @id = "drop" })
                                 </div>
 
@@ -80,7 +86,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <p><a href="/RentACarList/Index/" class="btn btn-primary py-3 px-4">Reserve Your Perfect Car</a></p>
+                                <p><a href="/CarPricing/Index/" class="btn btn-primary py-3 px-4">Reserve Your Perfect Car</a></p>
                             </div>
                         </div>
                     </div>
@@ -88,9 +94,6 @@
             </div>
     </section>
 
-    @* /@Html.DropDownList("location_id", (List<SelectListItem>)ViewBag.v, "Lokasyon Seçiniz", new { @class = "form-control" }) *@
-
-   
     @await Component.InvokeAsync("_DefaultLast5CarsWithBrandComponentPartial")
 
     @await Component.InvokeAsync("_AboutUsComponentPartial")
@@ -98,7 +101,7 @@
     @await Component.InvokeAsync("_ServiceComponentPartial")
 
     @await Component.InvokeAsync("_BecomeADriverComponentPartial")
-    
+
     @await Component.InvokeAsync("_TestimonialComponentPartial")
 
     @await Component.InvokeAsync("_GetLast3BlogsWithAuthorListComponentPartial")
