@@ -1,4 +1,4 @@
-﻿
+﻿ @model CarBook.Dto.LocationDtos.ResultLocationDto
 @{
     ViewData["Title"] = "Index";
     Layout = null;
@@ -13,7 +13,7 @@
 
     @await Component.InvokeAsync("_DefaultCoverUILayoutComponentPartial")
 
-    @model CarBook.Dto.LocationDtos.ResultLocationDto
+   
     <section class="ftco-section ftco-no-pt bg-light">
         <div class="container">
             <div class="row no-gutters">
@@ -24,7 +24,7 @@
                                 <h2>Make your trip</h2>
                                 <div class="form-group">
                                     <label for="" class="label" >Pick-up location</label>
-                                    @Html.DropDownList("location_id", (List<SelectListItem>)ViewBag.v, "Lokasyon Seçiniz", new { @class = "form-control" })
+                                    @Html.DropDownListFor(x => x.LocationID, (List<SelectListItem>)ViewBag.v, new { @class = "form-control", @id = "drop" })
                                 </div>
 
                                 <div class="d-flex">
@@ -87,6 +87,9 @@
                 </div>
             </div>
     </section>
+
+    @* /@Html.DropDownList("location_id", (List<SelectListItem>)ViewBag.v, "Lokasyon Seçiniz", new { @class = "form-control" }) *@
+
    
     @await Component.InvokeAsync("_DefaultLast5CarsWithBrandComponentPartial")
 
