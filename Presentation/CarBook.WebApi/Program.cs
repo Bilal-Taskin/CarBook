@@ -1,4 +1,4 @@
-using CarBook.Application.Features.CQRS.Handlers.AboutHandlers;
+    using CarBook.Application.Features.CQRS.Handlers.AboutHandlers;
 using CarBook.Application.Features.CQRS.Handlers.BannerHandlers;
 using CarBook.Application.Features.CQRS.Handlers.BrandHandlers;
 using CarBook.Application.Features.CQRS.Handlers.CarHandlers;
@@ -26,9 +26,50 @@ using CarBook.Persistance.Repositories.StatisticsRepositories;
 using CarBook.Application.Interfaces.StatistcisInterfaces;
 using CarBook.Application.Interfaces.RentACarInterfaces;
 using CarBook.Persistance.Repositories.RentACarRepositories;
+using CarBook.Application.Interfaces.CarFeatureInterfaces;
+using CarBook.Persistance.Repositories.CarFeatureRepositories;
+using CarBook.Application.Interfaces.CarDescriptionInterface;
+using CarBook.Application.Interfaces.ReviewInterface;
+using CarBook.Persistance.Repositories.ReviewRepository;
+using FluentValidation.AspNetCore;
+using System.Reflection;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using CarBook.Application.Tools;
+using CarBook.WebApi.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddHttpClient();
 
+
+builder.Services.AddCors(opt =>
+{
+    opt.AddPolicy("CorsPolicy", builder =>
+    {
+        builder.AllowAnyHeader().AllowAnyMethod().SetIsOriginAllowed((host) => true).AllowCredentials();
+    });
+});
+
+builder.Services.AddSignalR();
+
+
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
+{
+    opt.RequireHttpsMetadata = false;
+    opt.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidAudience = JwtTokenDefaults.ValidAudience,
+        ValidIssuer = JwtTokenDefaults.ValidIssuer,
+        ClockSkew = TimeSpan.Zero,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(JwtTokenDefaults.Key)),
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true
+    };
+});
+
+#region MediatorRegistration
 // Add services to the container.
 builder.Services.AddScoped<CarBookContext>();
 builder.Services.AddScoped(typeof(IRepository<>),typeof(Repository<>));//type of kullanýmýný araþtýr
@@ -39,6 +80,9 @@ builder.Services.AddScoped(typeof(ITagCloudRepository),typeof(TagCloudRepository
 builder.Services.AddScoped(typeof(IRentACarRepository),typeof(RentACarRepository));
 builder.Services.AddScoped(typeof(IGenericRepository<>),typeof(CommentRepository<>));
 builder.Services.AddScoped(typeof(IStatisticsRepository),typeof(StatisticRepository));
+builder.Services.AddScoped(typeof(ICarFeatureRepository),typeof(CarFeatureRepository));
+builder.Services.AddScoped(typeof(ICarDescriptionRepository),typeof(CarDescriptionRepsoitories));
+builder.Services.AddScoped(typeof(IReviewRepository),typeof(ReviewRepository));
 
 builder.Services.AddScoped<GetAboutQueryHanlder>();
 builder.Services.AddScoped<GetAboutByIdQueryHanlder>();
@@ -80,13 +124,16 @@ builder.Services.AddScoped<CreateContactCommandHandler>();
 builder.Services.AddScoped<RemoveContactCommandHandler>();
 builder.Services.AddScoped<UpdateContactCommandHandler>();
 
-
+#endregion 
 
 //mediator sayesinde yukardýaki karmaþýklýktan kurtulup aþaðýdaki kullanýma kavuþuyoruz. CarBook.Application kýsmýna eklediðimiz Services sayesinde bu kullanýmý oluþturduk.
 builder.Services.AddApplicationService(builder.Configuration);
+builder.Services.AddControllers().AddFluentValidation(x =>
+{
+    x.RegisterValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+});
 
-
-builder.Services.AddControllers();
+//builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -100,10 +147,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors("CorsPolicy");
 app.UseHttpsRedirection();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+app.MapHub<CarHub>("/carhub");
 
 app.Run();

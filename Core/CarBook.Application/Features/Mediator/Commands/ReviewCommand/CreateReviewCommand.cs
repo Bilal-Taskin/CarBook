@@ -1,0 +1,21 @@
+﻿using CarBook.Domain.Entities;
+using MediatR;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CarBook.Application.Features.Mediator.Commands.ReviewCommand
+{
+    public class CreateReviewCommand:IRequest
+    {
+     
+        public string CustomerName { get; set; }
+        public string CustomerImage { get; set; }
+        public string Comment { get; set; }
+        public int RateValue { get; set; }
+        public DateTime ReviewDate { get; set; }
+        public int CarId { get; set; }
+    }
+}

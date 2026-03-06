@@ -53,6 +53,10 @@ namespace CarBook.Persistance.Context
                 .OnDelete(DeleteBehavior.ClientSetNull);
         }
 
+        public DbSet<Review> Reviews{ get; set; }
+        public DbSet<AppUser> AppUsers{ get; set; }
+        public DbSet<AppRole> AppRoles{ get; set; }
+
 
     }
 }

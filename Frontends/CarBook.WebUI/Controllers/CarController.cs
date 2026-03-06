@@ -16,6 +16,7 @@ namespace CarBook.WebUI.Controllers
             this.httpClientFactory = httpClientFactory;
         }
 
+       
         public async Task<IActionResult> Index()
         {
 
@@ -31,6 +32,15 @@ namespace CarBook.WebUI.Controllers
                 return View(values);
             }
 
+            return View();
+        }
+
+      
+        public async Task<IActionResult> CarDetail(int id)
+        {
+            ViewBag.v1 = "Cars";
+            ViewBag.v2 = "Technique Car Properties";
+            ViewBag.carid = id;
             return View();
         }
     }

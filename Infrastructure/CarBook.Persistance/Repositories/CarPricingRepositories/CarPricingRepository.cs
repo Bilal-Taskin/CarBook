@@ -67,7 +67,7 @@ namespace CarBook.Persistance.Repositories.CarPricingRepositories
             List<CarPricingViewModel> values = new List<CarPricingViewModel>();
             using (var command = _context.Database.GetDbConnection().CreateCommand())
             {
-                command.CommandText = "Select * from (Select Model,CoverImageUrl, PricingId, Amount From CarPricings Inner Join Cars On Cars.CarID =CarPricings.CarID Inner Join  Brands On Brands.BrandID = Cars.BrandID ) As SourceTable Pivot ( Sum(Amount) for PricingId In([3],[6],[4]) )As PivotTable;";
+                command.CommandText = "Select * from (Select Model,Name, CoverImageUrl, PricingId, Amount From CarPricings Inner Join Cars On Cars.CarID =CarPricings.CarID Inner Join  Brands On Brands.BrandID = Cars.BrandID ) As SourceTable Pivot ( Sum(Amount) for PricingId In([3],[6],[4]) )As PivotTable;";
                 command.CommandType = System.Data.CommandType.Text;
                 _context.Database.OpenConnection();
                 using (var reader = command.ExecuteReader())
@@ -77,6 +77,7 @@ namespace CarBook.Persistance.Repositories.CarPricingRepositories
 
                         CarPricingViewModel carPricingViewModel = new CarPricingViewModel()
                         {
+                            Brand = reader["Name"].ToString(),
                             Model = reader["Model"].ToString(),
                             CoverImageUrl = reader["CoverImageUrl"].ToString(),
                             Amounts = new List<decimal>()
@@ -104,7 +105,7 @@ namespace CarBook.Persistance.Repositories.CarPricingRepositories
 
         public List<CarPricing> GetCarsPricingsWithCars()
         {
-            var values = _context.CarPricings.Include(x => x.Car).ThenInclude(y => y.Brand).Include(z => z.Pricing).Where(x => x.PricingId == 2).ToList();
+            var values = _context.CarPricings.Include(x => x.Car).ThenInclude(y => y.Brand).Include(x => x.Pricing).Where(z => z.PricingId == 3).ToList();
             return values;
         }
     }

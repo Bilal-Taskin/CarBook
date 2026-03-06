@@ -12,6 +12,7 @@ namespace CarBook.Domain.Entities
         public string Name { get; set; }
         public DateTime CreatedDate { get; set; }
         public string Description { get; set; }
+        public string Email { get; set; }
         public  int BlockId { get; set; }
         public Block Block { get; set; }
     }

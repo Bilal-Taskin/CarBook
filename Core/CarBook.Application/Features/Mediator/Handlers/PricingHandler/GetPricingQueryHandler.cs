@@ -28,9 +28,7 @@ namespace CarBook.Application.Features.Mediator.Handlers.PricingHandler
             {
                 PricingID = x.PricingID,    
                 Name = x.Name
-                
 
-                
             }).ToList();
         }
     }
