@@ -26,7 +26,9 @@ Dinamik UI: ViewComponents ve Partial Views yapıları ile modüler bir arayüz 
 
 
 📁 Proje Yapısı:
+
 CarBook
+
 ├── CarBook.Application      # MediatR Handlers, CQRS, DTOs, Interfaces
 
 ├── CarBook.Domain           # Entities
